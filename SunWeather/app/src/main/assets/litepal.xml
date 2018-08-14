@@ -1,0 +1,11 @@
+<litepal>
+    <dbname value="sun_weather"/>
+
+    <vversion value="1"/>
+
+    <list>
+        <mapping class="com.app.cqg.db.Province"/>
+        <mapping class="com.app.cqg.db.City"/>
+        <mapping class="com.app.cqg.db.County"/>
+    </list>
+</litepal>

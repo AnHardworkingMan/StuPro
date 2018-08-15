@@ -5,6 +5,8 @@ import android.text.TextUtils;
 import com.app.cqg.db.City;
 import com.app.cqg.db.County;
 import com.app.cqg.db.Province;
+import com.app.cqg.gson.Weather;
+import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -84,5 +86,22 @@ public class Utility {
             }
         }
         return false;
+    }
+
+    /**
+     * 将json数据解析后封装成实体类
+     * @param reponse
+     * @return
+     */
+    public static Weather handleWeatherResponse(String reponse){
+        try {
+            JSONObject jsonObject = new JSONObject(reponse);
+            JSONArray jsonArray = jsonObject.getJSONArray("HeWeather");
+            String weatherContent = jsonArray.getJSONObject(0).toString();
+            return new Gson().fromJson(weatherContent,Weather.class);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
     }
 }
